@@ -1,0 +1,14 @@
+@startuml registrarPublico
+skinparam shadowing false
+start
+:Selecionar sessão;
+:Informar quantidade de público;
+:System verifica capacidade da sala;
+if (Quantidade permitida?) then (sim)
+  :Registrar público diário;
+  :Atualizar totais;
+else (não)
+  :Exibir erro de capacidade;
+endif
+stop
+@enduml

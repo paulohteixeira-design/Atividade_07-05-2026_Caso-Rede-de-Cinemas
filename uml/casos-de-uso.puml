@@ -1,0 +1,30 @@
+@startuml casosUso
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Funcionário/Administrador" as Admin
+actor "Espectador" as Esp
+
+rectangle "Sistema de Gestão de Rede de Cinemas" {
+  usecase "Cadastrar cinema" as UC1
+  usecase "Cadastrar filme" as UC2
+  usecase "Cadastrar sessão" as UC3
+  usecase "Registrar público\nda sessão" as UC4
+  usecase "Consultar filmes\nem cartaz" as UC5
+  usecase "Consultar detalhes\ndo filme" as UC6
+  usecase "Consultar programação\ndo cinema" as UC7
+  usecase "Consultar totais de público" as UC8
+}
+
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+Admin --> UC4
+Admin --> UC8
+
+Esp --> UC5
+Esp --> UC6
+Esp --> UC7
+
+@enduml

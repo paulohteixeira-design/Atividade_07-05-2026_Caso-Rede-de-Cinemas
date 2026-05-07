@@ -1,0 +1,57 @@
+@startuml classesDominio
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+left to right direction
+
+class Cinema {
+  +nome
+  +enderecoCompleto
+  +cidade
+  +estado
+  +capacidadeTotal
+}
+
+class Sala {
+  +numero
+  +capacidade
+}
+
+class Filme {
+  +titulo
+  +duracaoMinutos
+  +sinopse
+}
+
+class Sessao {
+  +dataHoraInicio
+  +dataHoraFim
+  +valorIngresso
+}
+
+class RegistroPublico {
+  +data
+  +quantidadePessoas
+}
+
+class Diretor {
+  +nome
+}
+
+class Ator {
+  +nome
+}
+
+class Genero {
+  +nome
+}
+
+Cinema "1" *-- "1..*" Sala
+Cinema "1" o-- "0..*" Sessao
+Sala "1" o-- "0..*" Sessao
+Filme "1" o-- "0..*" Sessao
+Sessao "1" o-- "0..*" RegistroPublico
+Filme "1" --> "1" Diretor
+Filme "1" o-- "0..*" Ator
+Filme "0..*" -- "0..*" Genero
+
+@enduml

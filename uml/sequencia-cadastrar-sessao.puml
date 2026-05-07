@@ -1,0 +1,31 @@
+@startuml sequenciaCadastrarSessao
+skinparam shadowing false
+actor "Funcionário/Administrador" as Admin
+participant "View" as View
+participant "SessaoController" as Controller
+participant "SessaoService" as Service
+participant "SessaoRepository" as Repository
+participant "SQLite" as DB
+
+Admin -> View : preenche dados da sessão
+View -> Controller : salvarSessao(dados)
+Controller -> Service : criarSessao(dados)
+Service -> Service : validar duração e intervalo
+Service -> Repository : verificarConflito(sala, horario)
+Repository -> DB : SELECT sessões da sala
+DB --> Repository : resultado
+Repository --> Service : conflito/sem conflito
+alt sessão válida
+  Service -> Repository : salvar(sessao)
+  Repository -> DB : INSERT sessão
+  DB --> Repository : OK
+  Repository --> Service : sessão salva
+  Service --> Controller : confirmação
+  Controller --> View : sucesso
+  View --> Admin : exibir mensagem de confirmação
+else sessão inválida
+  Service --> Controller : erro de validação
+  Controller --> View : erro
+  View --> Admin : exibir mensagem de erro
+end
+@enduml

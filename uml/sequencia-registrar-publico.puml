@@ -1,0 +1,31 @@
+@startuml sequenciaRegistrarPublico
+skinparam shadowing false
+actor "Funcionário/Administrador" as Admin
+participant "View" as View
+participant "PublicoController" as Controller
+participant "PublicoService" as Service
+participant "PublicoRepository" as Repository
+participant "SQLite" as DB
+
+Admin -> View : informa quantidade do público
+View -> Controller : registrarPublico(sessao, quantidade)
+Controller -> Service : registrarPublico(sessao, quantidade)
+Service -> Repository : buscarSessao(sessao)
+Repository -> DB : SELECT sessão
+DB --> Repository : sessão
+Repository --> Service : sessão encontrada
+Service -> Service : validar capacidade da sala
+alt quantidade permitida
+  Service -> Repository : salvarRegistroPublico(dados)
+  Repository -> DB : INSERT registro
+  DB --> Repository : OK
+  Repository --> Service : registro salvo
+  Service --> Controller : confirmação
+  Controller --> View : sucesso
+  View --> Admin : exibir total atualizado
+else quantidade excede capacidade
+  Service --> Controller : erro de capacidade
+  Controller --> View : erro
+  View --> Admin : exibir mensagem de erro
+end
+@enduml

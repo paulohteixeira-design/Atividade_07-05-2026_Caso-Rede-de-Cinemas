@@ -1,0 +1,15 @@
+@startuml cadastrarSessao
+skinparam shadowing false
+start
+:Selecionar cinema e sala;
+:Informar filme, data e horário;
+:System valida duração do filme;
+:System verifica intervalo da sala;
+if (Dados válidos?) then (sim)
+  :Salvar sessão;
+  :Exibir confirmação;
+else (não)
+  :Exibir mensagem de erro;
+endif
+stop
+@enduml
