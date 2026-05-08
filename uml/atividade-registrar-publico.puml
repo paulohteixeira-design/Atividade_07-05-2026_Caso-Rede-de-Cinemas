@@ -1,4 +1,4 @@
-@startuml registrarPublico
+@startuml
 skinparam shadowing false
 start
 :Selecionar sessão;

@@ -1,4 +1,4 @@
-@startuml sequenciaCadastrarSessao
+@startuml
 skinparam shadowing false
 actor "Funcionário/Administrador" as Admin
 participant "View" as View

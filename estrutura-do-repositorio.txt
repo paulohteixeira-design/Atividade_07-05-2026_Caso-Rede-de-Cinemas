@@ -1,0 +1,19 @@
+
+rede-cinemas-python-app/
+├── data/
+│   └── cinema.db
+├── diagrams/
+├── docs/
+│   └── requisitos-e-regras.md
+├── requirements.txt
+├── src/
+│   ├── main.py
+│   └── app/
+│       ├── __init__.py
+│       ├── controllers.py
+│       ├── db.py
+│       ├── models.py
+│       ├── repositories.py
+│       ├── services.py
+│       └── view.py
+└── uml/

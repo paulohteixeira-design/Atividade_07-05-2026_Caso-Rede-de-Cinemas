@@ -1,4 +1,4 @@
-@startuml cadastrarSessao
+@startuml
 skinparam shadowing false
 start
 :Selecionar cinema e sala;
